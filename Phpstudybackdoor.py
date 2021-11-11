@@ -62,7 +62,7 @@ def filescan(url):
 
 if __name__=="__main__":
 	print(banner)
-    if args.url:
-    	urlscan()
-    elif args.file:
-    	poolfilescan()
+	if args.url:
+		urlscan()
+	elif args.file:
+		poolfilescan()
