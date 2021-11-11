@@ -4,6 +4,17 @@ import requests
 from colorama import Fore, init
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+banner='''
+       _               _             _       _                _       _                  
+      | |             | |           | |     | |              | |     | |                 
+ _ __ | |__  _ __  ___| |_ _   _  __| |_   _| |__   __ _  ___| | ____| | ___   ___  _ __ 
+| '_ \| '_ \| '_ \/ __| __| | | |/ _` | | | | '_ \ / _` |/ __| |/ / _` |/ _ \ / _ \| '__|
+| |_) | | | | |_) \__ \ |_| |_| | (_| | |_| | |_) | (_| | (__|   < (_| | (_) | (_) | |   
+| .__/|_| |_| .__/|___/\__|\__,_|\__,_|\__, |_.__/ \__,_|\___|_|\_\__,_|\___/ \___/|_|   
+| |         | |                         __/ |                                            
+|_|         |_|                        |___/                                             
+                                                        By Einzbern  
+'''
 header = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
     'Accept-Encoding': 'gzip,deflate',
@@ -50,6 +61,7 @@ def filescan(url):
 
 
 if __name__=="__main__":
+	print(banner)
     if args.url:
     	urlscan()
     elif args.file:
