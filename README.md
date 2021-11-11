@@ -1,0 +1,2 @@
+# PhpstudyBackdoor
+phpstudy后门多线程批量检测脚本
