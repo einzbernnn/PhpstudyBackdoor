@@ -12,3 +12,4 @@ python3 Phpstudybackdoor.py -f url.txt
 python3 Phpstudybackdoor.py -f url.txt -t 20
 ![Image text](https://github.com/einzbernnn/PhpstudyBackdoor/blob/main/21.png)
 
+文件中url格式为http://xxxxxx ,需要带http或https不能单ip或域名
