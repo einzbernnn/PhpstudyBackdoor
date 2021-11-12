@@ -1,6 +1,7 @@
 from multiprocessing.dummy import Pool
 import argparse
 import requests
+import sys
 from colorama import Fore, init
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -33,11 +34,13 @@ def urlscan():
 	try:
 		request = requests.get(url=args.url,headers=header,verify=False,timeout=3)
 		if 'einzbe' in request.text:
-			print(Fore.GREEN+'[+]{}存在漏洞'.format(args.url))
+			#print(Fore.GREEN+'[+]{}存在漏洞'.format(args.url))
+			sys.stdout.write(Fore.GREEN+'[+]{}存在漏洞\n'.format(args.url))
 		else:
-			print(Fore.RED+'[-]{}不存在漏洞'.format(args.url))
+			#print(Fore.RED+'[-]{}不存在漏洞'.format(args.url))
+			sys.stdout.write(Fore.RED+'[-]{}不存在漏洞\n'.format(args.url))
 	except:
-		print(Fore.RED+'[-]{}不存在漏洞'.format(args.url))
+		sys.stdout.write(Fore.RED+'[-]{}不存在漏洞\n'.format(args.url))
 
 def filelist():
 	with open(args.file,'r') as f:
@@ -45,19 +48,21 @@ def filelist():
 			urllist.append(line.strip('\n'))
 def poolfilescan():
 	filelist()
-	pool = Pool(args.t)  
-	result = pool.map(filescan, urllist)   
+	pool = Pool(processes=args.t)  
+	pool.map(filescan, urllist)
+
+
 
 def filescan(url):
 	init(autoreset = True)
 	try:
 		request = requests.get(url=url,headers=header,verify=False,timeout=3)
 		if 'einzbe' in request.text:
-			print(Fore.GREEN+'[+]{}存在漏洞'.format(url))
+			sys.stdout.write('[+]{}************存在漏洞************\n'.format(url))
 		else:
-			print(Fore.RED+'[-]{}不存在漏洞'.format(url))
+			sys.stdout.write('[-]{}不存在漏洞\n'.format(url))
 	except:
-		print(Fore.RED+'[-]{}不存在漏洞'.format(url))
+		sys.stdout.write('[-]{}不存在漏洞\n'.format(url))
 
 
 if __name__=="__main__":
@@ -66,3 +71,4 @@ if __name__=="__main__":
 		urlscan()
 	elif args.file:
 		poolfilescan()
+
